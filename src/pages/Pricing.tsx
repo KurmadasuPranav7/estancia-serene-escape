@@ -16,43 +16,19 @@ import { CalendarDays, Users } from "lucide-react";
 const accommodationPricingData = [
   {
     id: 1,
-    room: "Garden Cottage",
-    occupancy: "2 Adults",
-    weekday: 4500,
-    weekend: 5500,
-    longstay: 4000
+    room: "Villa 1",
+    occupancy: "9 Adults",
+    weekday: 22500,
+    weekend: 27000,
+    longstay: 20000
   },
   {
     id: 2,
-    room: "Family Suite",
-    occupancy: "4 Adults",
-    weekday: 7500,
-    weekend: 9000,
-    longstay: 6800
-  },
-  {
-    id: 3,
-    room: "Deluxe Villa",
-    occupancy: "6 Adults",
-    weekday: 12000,
-    weekend: 15000,
-    longstay: 10500
-  },
-  {
-    id: 4,
-    room: "Rustic Cabin",
-    occupancy: "2 Adults",
-    weekday: 3800,
-    weekend: 4800,
-    longstay: 3400
-  },
-  {
-    id: 5,
-    room: "Luxury Tent",
-    occupancy: "2 Adults",
-    weekday: 5200,
-    weekend: 6500,
-    longstay: 4600
+    room: "Villa 2",
+    occupancy: "9 Adults",
+    weekday: 22500,
+    weekend: 27000,
+    longstay: 20000
   }
 ];
 
