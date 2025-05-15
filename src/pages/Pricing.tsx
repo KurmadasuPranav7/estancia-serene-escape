@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { CalendarDays, Users } from "lucide-react";
+import { CalendarDays, Users, PhoneCall } from "lucide-react";
 
 const accommodationPricingData = [
   {
@@ -178,9 +178,17 @@ const Pricing = () => {
                 We offer tailored packages for special occasions, events, and long-term stays. Contact us to discuss your specific requirements.
               </p>
             </div>
-            <Button asChild className="bg-estancia-600 hover:bg-estancia-700">
-              <a href="mailto:bookings@poojithasestancia.com">Contact Us</a>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild className="bg-estancia-600 hover:bg-estancia-700 flex gap-2 items-center">
+                <a href="tel:+919876543210">
+                  <PhoneCall className="h-4 w-4" />
+                  <span>+91 98765 43210</span>
+                </a>
+              </Button>
+              <Button asChild className="bg-estancia-600 hover:bg-estancia-700">
+                <a href="mailto:bookings@poojithasestancia.com">Contact Us</a>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
