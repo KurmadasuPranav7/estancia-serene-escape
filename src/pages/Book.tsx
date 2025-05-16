@@ -4,11 +4,12 @@ import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { useToast } from "@/components/ui/use-toast";
+import { PhoneCall } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 // Mock data - in a real app, these would come from the backend
 const bookedDates = [
@@ -22,14 +23,6 @@ const bookedDates = [
   new Date(2025, 5, 7),  // June 7, 2025
 ];
 
-const accommodations = [
-  { id: 1, name: "Garden Cottage", maxGuests: 2 },
-  { id: 2, name: "Family Suite", maxGuests: 4 },
-  { id: 3, name: "Deluxe Villa", maxGuests: 6 },
-  { id: 4, name: "Rustic Cabin", maxGuests: 2 },
-  { id: 5, name: "Luxury Tent", maxGuests: 2 },
-];
-
 const Book = () => {
   const { toast } = useToast();
   const [selectedDates, setSelectedDates] = useState<{
@@ -39,13 +32,13 @@ const Book = () => {
     from: undefined,
     to: undefined,
   });
-  const [accommodation, setAccommodation] = useState("");
-  const [guests, setGuests] = useState("1");
+  const [guests, setGuests] = useState<number>(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const isDateUnavailable = (date: Date) => {
     return bookedDates.some((bookedDate) =>
@@ -58,7 +51,7 @@ const Book = () => {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!selectedDates.from || !selectedDates.to || !accommodation || !formData.name || !formData.email || !formData.phone) {
+    if (!selectedDates.from || !selectedDates.to || !formData.name || !formData.email || !formData.phone) {
       toast({
         title: "Missing Information",
         description: "Please fill all required fields",
@@ -66,11 +59,42 @@ const Book = () => {
       });
       return;
     }
+
+    setIsLoading(true);
+
+    // Prepare data for EmailJS
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      check_in: selectedDates.from ? format(selectedDates.from, "PPP") : '',
+      check_out: selectedDates.to ? format(selectedDates.to, "PPP") : '',
+      guests: guests,
+    };
     
-    // Here we would normally send the data to the backend
-    toast({
-      title: "Booking Request Submitted!",
-      description: "We'll contact you shortly to confirm your reservation.",
+    // Send email using EmailJS
+    emailjs.send(
+      'service_s46etvp',
+      'template_dp7ioi6',
+      templateParams,
+      'aNrQR-4LEGlEzd5XB' // This is a public key, safe to include in code
+    )
+    .then((response) => {
+      console.log('Email sent successfully:', response);
+      toast({
+        title: "Booking Request Submitted!",
+        description: "We'll contact you shortly to confirm your reservation.",
+      });
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.error('Email sending failed:', error);
+      toast({
+        title: "Email Sending Failed",
+        description: "There was an error sending your booking request. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
     });
   };
 
@@ -80,7 +104,7 @@ const Book = () => {
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-serif font-semibold mb-4">Book Your Stay</h1>
           <p className="text-lg text-muted-foreground">
-            Select your dates and accommodation to start your peaceful retreat at Poojitha's Estancia
+            Select your dates to start your peaceful retreat at Poojitha's Estancia
           </p>
         </div>
 
@@ -153,35 +177,16 @@ const Book = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="accommodation">Accommodation</Label>
-                  <Select value={accommodation} onValueChange={setAccommodation}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select accommodation" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {accommodations.map((acc) => (
-                        <SelectItem key={acc.id} value={acc.id.toString()}>
-                          {acc.name} (max {acc.maxGuests} guests)
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
                   <Label htmlFor="guests">Number of Guests</Label>
-                  <Select value={guests} onValueChange={setGuests}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select number of guests" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {[1, 2, 3, 4, 5, 6].map((num) => (
-                        <SelectItem key={num} value={num.toString()}>
-                          {num} {num === 1 ? "Guest" : "Guests"}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Input
+                    id="guests"
+                    type="number"
+                    min="1"
+                    max="20"
+                    value={guests}
+                    onChange={(e) => setGuests(parseInt(e.target.value) || 1)}
+                    className="w-full"
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -215,8 +220,12 @@ const Book = () => {
                   />
                 </div>
 
-                <Button type="submit" className="w-full bg-estancia-600 hover:bg-estancia-700">
-                  Request Booking
+                <Button 
+                  type="submit" 
+                  className="w-full bg-estancia-600 hover:bg-estancia-700"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Sending..." : "Request Booking"}
                 </Button>
               </form>
             </CardContent>
@@ -238,8 +247,11 @@ const Book = () => {
             </div>
             <div className="flex flex-col gap-2">
               <p className="font-medium">Call us directly:</p>
-              <Button asChild variant="outline" className="border-estancia-600 text-estancia-600">
-                <a href="tel:+919876543210">+91 98765 43210</a>
+              <Button asChild variant="outline" className="border-estancia-600 text-estancia-600 flex gap-2 items-center">
+                <a href="tel:+919876543210">
+                  <PhoneCall className="h-4 w-4" />
+                  <span>+91 98765 43210</span>
+                </a>
               </Button>
             </div>
           </div>
