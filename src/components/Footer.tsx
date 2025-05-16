@@ -9,7 +9,13 @@ const Footer = () => {
       <div className="container py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-serif font-semibold">Poojitha's Estancia</h3>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/lovable-uploads/2ea29925-68a8-46c3-a463-cde106bea20e.png" 
+                alt="Poojitha's Estancia Logo" 
+                className="h-16 w-auto"
+              />
+            </div>
             <p className="text-estancia-100 max-w-xs">
               Experience tranquility and nature's beauty at our scenic farm stay retreat in Telangana.
             </p>
@@ -22,8 +28,8 @@ const Footer = () => {
               <p>Nazeebnagar, Bhakaram Village,</p>
               <p>Moinabad, Telangana 501504</p>
               <p className="pt-2">
-                <span className="block">Phone: +91 98765 43210</span>
-                <span className="block">Email: info@poojithasestancia.com</span>
+                <span className="block">Phone: +91 91548 55984</span>
+                <span className="block">Email: poojithaagrotech@gmail.com</span>
               </p>
             </address>
           </div>
@@ -68,7 +74,9 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/poojithasestancia/?__pwa=1"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-estancia-700 hover:bg-estancia-600 transition h-10 w-10 rounded-full flex items-center justify-center"
                 aria-label="Instagram"
               >
@@ -118,7 +126,7 @@ const Footer = () => {
                 Located in the serene outskirts of Hyderabad, our farm stay is easily accessible while offering complete privacy and tranquility.
               </p>
               <a 
-                href="https://maps.app.goo.gl/YXmE8jn2EHWhvVNu8" 
+                href="https://maps.app.goo.gl/i5yRr6oG9FS2w9Aj7" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-estancia-400 hover:text-white transition"
