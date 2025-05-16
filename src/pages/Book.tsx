@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,9 @@ import { format } from "date-fns";
 import { useToast } from "@/components/ui/use-toast";
 import { PhoneCall } from "lucide-react";
 import emailjs from '@emailjs/browser';
+
+// EmailJS configuration
+emailjs.init("aNrQR-4LEGlEzd5XB");
 
 // Mock data - in a real app, these would come from the backend
 const bookedDates = [
@@ -72,12 +74,14 @@ const Book = () => {
       guests: guests,
     };
     
+    console.log("Sending email with params:", templateParams);
+    
     // Send email using EmailJS
     emailjs.send(
       'service_s46etvp',
       'template_dp7ioi6',
       templateParams,
-      'aNrQR-4LEGlEzd5XB' // This is a public key, safe to include in code
+      'aNrQR-4LEGlEzd5XB'
     )
     .then((response) => {
       console.log('Email sent successfully:', response);
@@ -85,6 +89,17 @@ const Book = () => {
         title: "Booking Request Submitted!",
         description: "We'll contact you shortly to confirm your reservation.",
       });
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+      });
+      setSelectedDates({
+        from: undefined,
+        to: undefined,
+      });
+      setGuests(1);
       setIsLoading(false);
     })
     .catch((error) => {
