@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://kurmadasupranav7.github.io/estancia-serene-escape",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
