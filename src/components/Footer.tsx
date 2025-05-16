@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -101,6 +102,47 @@ const Footer = () => {
               <p className="text-estancia-100 text-sm">
                 &copy; {new Date().getFullYear()} Poojitha's Estancia. All rights reserved.
               </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Google Maps Section */}
+        <div className="mt-8 pt-8 border-t border-estancia-700">
+          <div className="flex flex-col md:flex-row items-center gap-6">
+            <div className="w-full md:w-1/3">
+              <h4 className="text-lg font-serif font-medium flex items-center gap-2 mb-4">
+                <MapPin className="h-5 w-5 text-estancia-400" />
+                Find Us
+              </h4>
+              <p className="text-estancia-100 mb-4">
+                Located in the serene outskirts of Hyderabad, our farm stay is easily accessible while offering complete privacy and tranquility.
+              </p>
+              <a 
+                href="https://maps.app.goo.gl/YXmE8jn2EHWhvVNu8" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-estancia-400 hover:text-white transition"
+              >
+                Get Directions
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+            <div className="w-full md:w-2/3">
+              <div className="rounded-lg overflow-hidden w-full h-[300px] border-4 border-estancia-700">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3809.3367861188085!2d78.28818799999998!3d17.2992922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbc10d3a54c513%3A0xd3f810a6a1de5e18!2sPoojitha&#39;s%20Estancia!5e0!3m2!1sen!2sin!4v1747357407735!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Poojitha's Estancia Location"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
