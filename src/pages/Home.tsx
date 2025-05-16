@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <>
-      <section className="hero-section">
+      <section className="hero-section custom-hero-image">
         <div className="container text-center">
           <div className="animate-fade-in max-w-3xl mx-auto text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-semibold mb-4">

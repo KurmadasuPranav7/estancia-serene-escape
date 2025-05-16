@@ -94,6 +94,12 @@
     @apply py-24 md:py-32 lg:py-40;
   }
   
+  .custom-hero-image {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('/lovable-uploads/2599c5d2-af6d-4728-82d7-72f197623d6a.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
   .feature-card {
     @apply p-6 rounded-lg transition-all duration-300 bg-white/90 hover:bg-white shadow-sm hover:shadow-md border border-border;
   }
