@@ -2,106 +2,128 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import pes1 from "../assets/pes1.jpg";
+import pes2 from "../assets/pes2.jpg";
+import pes3 from "../assets/pes3.jpg";
+import pes4 from "../assets/pes4.jpg";
+import pes5 from "../assets/pes5.jpg";
+import pes6 from "../assets/pes6.jpg";
+import pes7 from "../assets/pes7.jpg";
+import pes8 from "../assets/pes8.jpg";
+import pes9 from "../assets/pes9.jpg";
+import pes10 from "../assets/pes10.jpg";
+import pes11 from "../assets/pes11.jpg";
+import pes12 from "../assets/pes12.jpg";
+import pes13 from "../assets/pes13.jpg";
+import pes14 from "../assets/pes14.jpg";
+import pes15 from "../assets/pes15.jpg";
+import pes16 from "../assets/pes16.jpg";
+import pes17 from "../assets/pes17.jpg";
+import pes18 from "../assets/pes18.jpg";
+import pes19 from "../assets/pes19.jpg";
+import pes20 from "../assets/pes20.jpg";
+
+
 
 const galleryImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&q=80",
+    src:  pes1,
     alt: "Scenic farm view with mountains",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80",
+    src: pes2,
     alt: "Beautiful garden flowers",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80",
+    src: pes3,
     alt: "River between mountains",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&q=80",
+    src: pes4,
     alt: "Herd of sheep in field",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1493962853295-0fd70327578a?auto=format&fit=crop&q=80",
+    src: pes5,
     alt: "Ox on mountain",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1500531359996-c89a0e63e49c?auto=format&fit=crop&q=80",
+    src: pes6,
     alt: "Farm cottage exterior",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&q=80",
+    src:pes7,
     alt: "Farm breakfast spread",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1477239439998-839196943351?auto=format&fit=crop&q=80",
+    src:pes8,
     alt: "Misty morning landscape",
   },
   {
     id: 9,
-    src: "https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&q=80",
+    src: pes9,
     alt: "Sunset over farm",
   },
   {
     id: 10,
-    src: "https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?auto=format&fit=crop&q=80",
+    src:pes10,
     alt: "Star-filled night sky",
   },
   {
     id: 11,
-    src: "https://images.unsplash.com/photo-1475483768296-6163e08872a1?auto=format&fit=crop&q=80",
+    src: pes11,
     alt: "Rustic cottage interior",
   },
   {
     id: 12,
-    src: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80",
+    src: pes12,
     alt: "Cozy living room",
   },
   {
     id: 13,
-    src: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80",
+    src: pes13,
     alt: "Farm fresh vegetables",
   },
   {
     id: 14,
-    src: "https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?auto=format&fit=crop&q=80",
+    src: pes14,
     alt: "Farm animals grazing",
   },
   {
     id: 15,
-    src: "https://images.unsplash.com/photo-1510598125064-a9c0c78a6213?auto=format&fit=crop&q=80",
+    src:pes15,
     alt: "Peaceful lake view",
   },
   {
     id: 16,
-    src: "https://images.unsplash.com/photo-1461770354136-8f58567b617a?auto=format&fit=crop&q=80",
+    src: pes16,
     alt: "Morning farm activities",
   },
   {
     id: 17,
-    src: "https://images.unsplash.com/photo-1535463731090-e34f4b5098c5?auto=format&fit=crop&q=80",
+    src: pes17,
     alt: "Traditional local cuisine",
   },
   {
     id: 18,
-    src: "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?auto=format&fit=crop&q=80",
+    src: pes18,
     alt: "Farm walkway",
   },
   {
     id: 19,
-    src: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&q=80",
+    src:pes19,
     alt: "Hammock relaxation spot",
   },
   {
     id: 20,
-    src: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&q=80",
+    src: pes20,
     alt: "Sunset through trees",
   },
 ];
