@@ -4,6 +4,10 @@ import { Link as RouterLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import pes1 from "../assets/pes1.jpg";
+import pes2 from "../assets/pes2.jpg";
+import pes3 from "../assets/pes3.jpg";
+import pes4 from "../assets/pes4.jpg";
 
 interface FeatureProps {
   title: string;
@@ -91,17 +95,17 @@ const Home = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&q=80"
+                src={pes2}
                 alt="Estate garden view"
                 className="w-full h-64 object-cover rounded-lg"
               />
               <img
-                src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80"
+                src={pes3}
                 alt="Scenic view of the farm"
                 className="w-full h-64 object-cover rounded-lg"
               />
               <img
-                src="https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&q=80"
+                src={pes4}
                 alt="Farm animals"
                 className="w-full h-64 object-cover rounded-lg col-span-2"
               />
